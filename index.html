@@ -1,596 +1,827 @@
-<header class="aa-header">
-  <div class="aa-header-left">
-    <img src="AATransmittingLogo.png" alt="AA Transmitting Logo" class="aa-logo" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AA Transmitting — Your Premier Privacy-Focused Transmitter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-gradient-start: #f3f4f6;
+      --bg-gradient-mid: #ffffff;
+      --bg-gradient-end: #eef0f3;
+      --card-bg: #ffffff;
+      --primary: #b00020;
+      --primary-dark: #7f0016;
+      --accent: #004080;
+      --text-main: #222222;
+      --text-muted: #555555;
+      --border-subtle: #e0e0e0;
+      --shadow-soft: 0 14px 30px rgba(0, 0, 0, 0.08);
+      --radius-card: 14px;
+      --radius-pill: 999px;
+      --max-width: 1080px;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-    <div class="aa-brand-block">
-      <div class="aa-brand-title">AA TRANSMITTING</div>
-      <div class="aa-brand-subtitle">
-        Private, privacy‑focused transmitting service for Central New Jersey.
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      color: var(--text-main);
+      background: linear-gradient(
+        180deg,
+        var(--bg-gradient-start),
+        var(--bg-gradient-mid),
+        var(--bg-gradient-end)
+      );
+      min-height: 100vh;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .aa-page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header.aa-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .aa-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .aa-logo {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    .aa-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .aa-brand-name {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .aa-brand-tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .aa-nav {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .aa-nav a {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .aa-nav a:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .aa-hero {
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 24px 20px 22px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 20px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    @media (max-width: 800px) {
+      .aa-hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header.aa-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .aa-nav {
+        justify-content: flex-start;
+      }
+    }
+
+    .aa-hero-main-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .aa-hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .aa-hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: #f7f7f9;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .aa-hero-pill span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(176, 0, 32, 0.08);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .aa-hero-list {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+
+    .aa-hero-list li {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .aa-hero-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .aa-hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .aa-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(176, 0, 32, 0.25);
+      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    .aa-btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 12px 26px rgba(176, 0, 32, 0.3);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .aa-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      background: transparent;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid rgba(0, 64, 128, 0.25);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .aa-btn-secondary:hover {
+      background: rgba(0, 64, 128, 0.04);
+      border-color: rgba(0, 64, 128, 0.5);
+      text-decoration: none;
+    }
+
+    .aa-hero-contact {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .aa-hero-contact strong {
+      color: var(--text-main);
+    }
+
+    .aa-hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .aa-hero-card {
+      width: 100%;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 12px 12px 10px;
+      border: 1px solid #e3e5ea;
+    }
+
+    .aa-hero-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .aa-hero-card-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .aa-hero-qr-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .aa-hero-qr {
+      width: 70px;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      background: #ffffff;
+    }
+
+    .aa-hero-qr-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .aa-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px 18px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .aa-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .aa-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .aa-section p {
+      font-size: 14px;
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+
+    .aa-list {
+      list-style: none;
+      margin: 4px 0 8px;
+      padding-left: 0;
+    }
+
+    .aa-list li {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .aa-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .aa-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      border-left: 3px solid rgba(0, 64, 128, 0.35);
+      padding-left: 10px;
+      margin-top: 6px;
+    }
+
+    .aa-example-block {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f8f9fb;
+      border: 1px dashed #d4d7e0;
+    }
+
+    .aa-example-label {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .aa-example-image {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 8px;
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 6px;
+      border: 1px solid #e0e0e0;
+      background: #ffffff;
+    }
+
+    .aa-example-text {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-top: 4px;
+      margin-bottom: 4px;
+      line-height: 1.55;
+    }
+
+    .aa-map-image {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 10px;
+      display: block;
+      margin-top: 8px;
+      border: 1px solid #d8dbe3;
+      background: #ffffff;
+    }
+
+    .aa-footer {
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid #dcdfe6;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .aa-footer a {
+      font-size: 12px;
+    }
+
+    .aa-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .aa-chip {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f3f4f8;
+      color: var(--text-muted);
+      border: 1px solid #e0e2ea;
+    }
+  </style>
+</head>
+<body>
+  <div class="aa-page">
+    <!-- HEADER -->
+    <header class="aa-header">
+      <div class="aa-brand">
+        <img src="AATransmittingLogo.png" alt="AA Transmitting Logo" class="aa-logo" />
+        <div class="aa-brand-text">
+          <div class="aa-brand-name">AA Transmitting</div>
+          <div class="aa-brand-tagline">Your Premier Privacy-Focused Transmitter</div>
+        </div>
       </div>
-    </div>
+      <nav class="aa-nav">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#directions">Send Directions</a>
+        <a href="#pay">Pay Online</a>
+        <a href="#examples">Examples</a>
+        <a href="#coop">Co-Op & Safety</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="aa-hero" id="top">
+      <div>
+        <div class="aa-hero-pill">
+          <span>NJ</span>
+          Private, surge-free transmitting — no tracking, no apps, no nonsense.
+        </div>
+        <h1 class="aa-hero-main-title">Private, Surge-Free Transmitting in New Jersey</h1>
+        <p class="aa-hero-subtitle">
+          You choose the route. You keep your privacy. We handle the transmitting — fairly, clearly, and without surprise fees.
+        </p>
+        <ul class="aa-hero-list">
+          <li>No tracking apps, no data harvesting, no surge pricing.</li>
+          <li>Transparent per-mile, idle-time, and toll fee structure.</li>
+          <li>Co-op model — transmitters keep 87.5% of each route.</li>
+        </ul>
+        <div class="aa-hero-cta-row">
+          <a href="https://square.link/u/zN6dTcJ3" class="aa-btn-primary" id="pay">
+            Pay Securely via Square
+          </a>
+          <a href="#directions" class="aa-btn-secondary">
+            See How to Send Directions
+          </a>
+          <div class="aa-hero-contact">
+            <strong>Text:</strong> 732-633-0200 &nbsp;|&nbsp;
+            <strong>Email:</strong> <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a>
+          </div>
+        </div>
+      </div>
+      <div class="aa-hero-side">
+        <div class="aa-hero-card">
+          <div class="aa-hero-card-title">Pay Online — No Cash, No Apps</div>
+          <p class="aa-hero-card-text">
+            All transmitting payments are processed securely through Square. Our transmitters never carry cash.
+            You simply match your distance, idle-time, and toll fees on the Square Buy Page.
+          </p>
+          <div class="aa-hero-qr-row">
+            <img src="aatransmittingsquarepaymentqr.png" alt="AA Transmitting Square Payment QR Code" class="aa-hero-qr" />
+            <div class="aa-hero-qr-text">
+              Scan with your phone to open the secure Square payment page and check the boxes that match your transmitting.
+            </div>
+          </div>
+        </div>
+        <div class="aa-hero-card">
+          <div class="aa-hero-card-title">Service Area — Central New Jersey</div>
+          <p class="aa-hero-card-text">
+            AA Transmitting primarily serves Central New Jersey and surrounding areas. Transmitting availability may vary
+            based on time, distance, and route.
+          </p>
+          <div class="aa-chip-row">
+            <div class="aa-chip">Central NJ</div>
+            <div class="aa-chip">Route-Based Pricing</div>
+            <div class="aa-chip">No Surge</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICE AREA MAP -->
+    <section class="aa-section" id="how-it-works">
+      <h2 class="aa-section-title">Service Area and How It Works</h2>
+      <p>
+        AA Transmitting is a privacy-focused transmitting co-op based in New Jersey. You provide the directions using your
+        own navigation app, we calculate the transmitting based on your route, and you pay securely online through Square.
+      </p>
+      <p>
+        Our service area centers on New Jersey and nearby regions. Availability depends on distance, time, and route
+        conditions.
+      </p>
+      <img src="aatransmittingserviceareamap.png" alt="AA Transmitting Service Area Map" class="aa-map-image" />
+      <p class="aa-note">
+        If you are unsure whether your transmitting is within range, text your directions screenshot to 732-633-0200 and
+        we will confirm availability.
+      </p>
+    </section>
+
+    <!-- PRICING LOGIC -->
+    <section class="aa-section" id="pricing">
+      <h2 class="aa-section-title">How Pricing Works</h2>
+      <p>
+        AA Transmitting uses a simple, transparent structure based on three components: distance, idle-time, and toll fees.
+        There are no surge prices, no hidden fees, and no tracking apps required.
+      </p>
+
+      <h3 class="aa-subtitle">1. Per-Mile Transmitting Fees</h3>
+      <p>
+        Distance is calculated using your chosen route in your navigation app. The total distance is always rounded up to
+        the next whole mile. You then select the combination of per-mile options on the Square Buy Page that matches your
+        total distance.
+      </p>
+      <div class="aa-example-block">
+        <div class="aa-example-label">Per-Mile Options (Example from Square)</div>
+        <img src="aatransmittingsitepic2.png" alt="Per-Mile and Toll Fee Options Example" class="aa-example-image" />
+        <p class="aa-example-text">
+          For example, if your route is 30 miles, you would select the “30-Mile Transmitting Fee” option. If your route is
+          33 miles, you might select a 30-mile option plus three 1-mile options.
+        </p>
+      </div>
+
+      <h3 class="aa-subtitle">2. Idle-Time Fees</h3>
+      <p>
+        Idle-time is charged when you request the transmitter to wait during the transmitting, or when traffic adds more
+        than 10 minutes to the estimated time. After the first 10 minutes, idle-time is charged at
+        <strong>$0.50 per minute</strong>, using the idle-time options on the Square Buy Page.
+      </p>
+      <div class="aa-example-block">
+        <div class="aa-example-label">Idle-Time Options (Example from Square)</div>
+        <img src="aatransmittingsitepic5.png" alt="Idle-Time Fee Options Example" class="aa-example-image" />
+        <p class="aa-example-text">
+          You only select idle-time options if you request waiting or if a delay clearly extends beyond the original
+          estimate. This keeps your pricing fair and transparent.
+        </p>
+      </div>
+
+      <h3 class="aa-subtitle">3. Toll Fee Pricing</h3>
+      <p>
+        Toll fees are calculated using your own navigation or directions app (Google Maps, Apple Maps, Waze, HereWeGo,
+        etc.). The toll amount is based on:
+      </p>
+      <ul class="aa-list">
+        <li>The address the item is being transmitted <strong>from</strong> (Address A)</li>
+        <li>The address the item is being transmitted <strong>to</strong> (Address B)</li>
+        <li>The <strong>specific route</strong> you choose</li>
+      </ul>
+      <p>
+        Whatever toll amount your app shows for your chosen route is simply
+        <strong>rounded up to the next even dollar</strong> and added to your transmitting total.
+      </p>
+      <p class="aa-note">
+        Example: If your chosen route shows a $1.67 toll, the toll fee for your transmitting is rounded up to
+        <strong>$2.00</strong>. On the Square Buy Page, you would select the toll fee boxes that add up to $2.00.
+      </p>
+    </section>
+
+    <!-- DIRECTIONS -->
+    <section class="aa-section" id="directions">
+      <h2 class="aa-section-title">How to Send Transmitting Directions</h2>
+      <p>
+        To begin a transmitting, simply use your preferred navigation or directions app (Google Maps, Apple Maps, Waze,
+        HereWeGo, etc.) and enter:
+      </p>
+      <ul class="aa-list">
+        <li>The address the item is being transmitted <strong>from</strong> (Address A)</li>
+        <li>The address the item is being transmitted <strong>to</strong> (Address B)</li>
+      </ul>
+      <p>Your screenshot must clearly show:</p>
+      <ul class="aa-list">
+        <li><strong>Distance</strong> of the route</li>
+        <li><strong>Estimated time</strong> of the route</li>
+        <li><strong>Your chosen route highlighted</strong></li>
+        <li><strong>Any toll fees</strong> listed for that route</li>
+      </ul>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example — Valid Directions Screenshot</div>
+        <img src="aatransmittingsitepic4.png" alt="Example Directions Screenshot 3.5 Miles" class="aa-example-image" />
+        <p class="aa-example-text">
+          This example shows a 3.5-mile route with an estimated time of 10 minutes and no tolls. Because distance is
+          rounded up, this becomes a 4-mile transmitting.
+        </p>
+      </div>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example — Directions with Toll</div>
+        <img src="aatransmittingsitepic3.png" alt="Example Directions Screenshot with Toll" class="aa-example-image" />
+        <p class="aa-example-text">
+          This example shows a 30-mile route with an estimated time of 34 minutes and a $1.67 toll. The toll is rounded
+          up to $2.00 for transmitting purposes.
+        </p>
+      </div>
+
+      <p>Once your screenshot is ready, send it to us by either:</p>
+      <ul class="aa-list">
+        <li><strong>Text:</strong> 732-633-0200</li>
+        <li><strong>Email:</strong> <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a></li>
+      </ul>
+      <p class="aa-note">
+        You will receive a confirmation message once we’ve received your directions. After that, you can complete your
+        payment through Square using the link or QR code.
+      </p>
+    </section>
+
+    <!-- PAYMENT SECTION (SQUARE BUY PAGE EXAMPLE) -->
+    <section class="aa-section">
+      <h2 class="aa-section-title">How to Pay for Your Transmitting</h2>
+      <p>
+        Once you’ve sent us your transmitting directions and received confirmation, you can securely pay for your
+        transmitting through Square. Payment is simple: just check the boxes that match your
+        <strong>distance</strong>, <strong>idle-time</strong>, and <strong>toll fees</strong>.
+      </p>
+
+      <h3 class="aa-subtitle">Open the Secure Square Pay Page</h3>
+      <p>You can access the payment page in any of the following ways:</p>
+      <ul class="aa-list">
+        <li>Click the “Pay Securely via Square” button at the top of this site</li>
+        <li>Scan the QR code below with your phone</li>
+        <li>Or go directly to: <strong>https://square.link/u/zN6dTcJ3</strong></li>
+      </ul>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Scan to Pay</div>
+        <img src="aatransmittingsquarepaymentqr.png" alt="AA Transmitting Square Payment QR Code" class="aa-example-image" />
+      </div>
+
+      <h3 class="aa-subtitle">Match Your Distance, Idle-Time, and Tolls</h3>
+      <p>
+        On the Square Buy Page, simply check the combination of boxes that add up to your total distance (rounded up),
+        any idle-time, and your toll fees (rounded up to the next even dollar).
+      </p>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example — Square Buy Page</div>
+        <img src="aatransmittingsitepic1.png" alt="Square Buy Page Example" class="aa-example-image" />
+        <p class="aa-example-text">
+          This example shows how per-mile transmitting fees and toll fees can be combined. You select only the boxes that
+          apply to your transmitting.
+        </p>
+      </div>
+
+      <p class="aa-note">
+        Once your payment is complete, you will receive an estimated arrival time through the same method you used to send
+        your directions (text or email). Our transmitters never carry cash — all payments are processed securely online.
+      </p>
+    </section>
+
+    <!-- EXAMPLES SECTION -->
+    <section class="aa-section" id="examples">
+      <h2 class="aa-section-title">Examples — Putting It All Together</h2>
+      <p>
+        These examples show how to read your transmitting directions, how to calculate distance, idle-time, and toll
+        fees, and how to check the correct boxes on the Square Buy Page.
+      </p>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example 1 — 3.5 Miles, No Delays, No Tolls</div>
+        <img src="aatransmittingsitepic4.png" alt="3.5 Mile Route Example" class="aa-example-image" />
+        <p class="aa-example-text">
+          This route is 3.5 miles with no significant delays and no tolls. Because distance must always be rounded up to
+          the next whole mile, this becomes a <strong>4-mile transmitting</strong>.
+        </p>
+        <p class="aa-example-text">
+          On the Square Buy Page, you would check:
+        </p>
+        <ul class="aa-list">
+          <li>Four “1-Mile Transmitting Fee” boxes</li>
+          <li>No idle-time boxes</li>
+          <li>No toll boxes</li>
+        </ul>
+      </div>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example 2 — 30 Miles, 34 Minutes, $1.67 Toll</div>
+        <img src="aatransmittingsitepic3.png" alt="30 Mile Route with Toll Example" class="aa-example-image" />
+        <p class="aa-example-text">
+          This route is 30 miles, estimated at 34 minutes, with a $1.67 toll. The toll is rounded up to
+          <strong>$2.00</strong>.
+        </p>
+        <p class="aa-example-text">
+          On the Square Buy Page, you would check:
+        </p>
+        <ul class="aa-list">
+          <li>One “30-Mile Transmitting Fee” box</li>
+          <li>No idle-time boxes (no significant delay)</li>
+          <li>Two “$1 Toll Fee” boxes</li>
+        </ul>
+      </div>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example 3 — Idle-Time Trigger</div>
+        <p class="aa-example-text">
+          Idle-time is charged when:
+        </p>
+        <ul class="aa-list">
+          <li>You request the transmitter to wait during the transmitting</li>
+          <li>A traffic delay adds more than 10 minutes to the estimated time</li>
+        </ul>
+        <p class="aa-example-text">
+          After the 10-minute mark, idle-time is charged at <strong>$0.50 per minute</strong>, using the idle-time options
+          on the Square Buy Page.
+        </p>
+      </div>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example 4 — Toll Fees Only</div>
+        <p class="aa-example-text">
+          If your route contains only toll fees (no distance beyond the base mile and no idle-time), simply check the toll
+          boxes that match the rounded-up toll amount.
+        </p>
+      </div>
+
+      <div class="aa-example-block">
+        <div class="aa-example-label">Example 5 — Full Breakdown</div>
+        <p class="aa-example-text">
+          Any transmitting can be paid for by combining:
+        </p>
+        <ul class="aa-list">
+          <li>Distance (rounded up)</li>
+          <li>Idle-time (if any)</li>
+          <li>Toll fees (rounded up to the next even dollar)</li>
+        </ul>
+        <p class="aa-example-text">
+          This ensures you never need an app tracking you or gathering your data. You maintain full privacy while still
+          receiving accurate, upfront pricing.
+        </p>
+      </div>
+    </section>
+
+    <!-- CO-OP & SAFETY -->
+    <section class="aa-section" id="coop">
+      <h2 class="aa-section-title">Co-Op Structure, Fairness, and Safety</h2>
+      <p>
+        AA Transmitting is structured as a <strong>co-op</strong>, which means our transmitters keep significantly more of
+        each route than rideshare, taxi, or delivery drivers do. This ensures fair compensation, long-term sustainability,
+        and a service built on mutual respect rather than exploitation.
+      </p>
+      <ul class="aa-list">
+        <li>Rideshare companies typically keep <strong>40%–70%</strong> of each route</li>
+        <li>Taxi companies keep <strong>33%–55%</strong></li>
+        <li>Delivery companies keep <strong>45%–65%</strong></li>
+        <li>AA Transmitting transmitters keep <strong>87.5%</strong></li>
+      </ul>
+      <p>
+        This structure allows us to maintain a privacy-focused, surge-free, and customer-first service while ensuring our
+        transmitters are treated fairly.
+      </p>
+
+      <h3 class="aa-subtitle">Safety and Recording Policy</h3>
+      <p>
+        For the safety and security of all parties, each transmitting is recorded for its duration. These recordings are
+        <strong>immediately overwritten</strong> by the next transmitting unless a transmitter notices that a customer has
+        taken an amenity clearly meant for customer use (such as bottled water or device chargers).
+      </p>
+      <p>
+        In those rare cases, the previous transmitting’s recording is securely stored only for the purpose of resolving the
+        amenity charge dispute. If no amenity is taken, the recording is deleted automatically and permanently.
+      </p>
+      <p class="aa-note">
+        AA Transmitting never tracks customers, never stores unnecessary data, and never compromises privacy. Our entire
+        system is designed to protect both you and the transmitter while maintaining complete transparency.
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="aa-footer">
+      <div>© <span id="year"></span> AA Transmitting. All rights reserved.</div>
+      <div>
+        Text: 732-633-0200 &nbsp;|&nbsp;
+        Email: <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a>
+      </div>
+    </footer>
   </div>
 
-  <div class="aa-header-right">
-    <div class="aa-contact-line">
-      <strong>Email:</strong>
-      <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a>
-    </div>
-
-    <div class="aa-contact-line">
-      <strong>Text / Call:</strong>
-      <a href="tel:17326330200">732‑633‑0200</a>
-    </div>
-
-    <div class="aa-hours">Open 7 days: 5:00am – 2:15am</div>
-
-    <a class="aa-pay-button"
-       href="https://square.link/u/zN6dTcJ3"
-       target="_blank"
-       rel="noopener">
-       Pay securely via Square
-    </a>
-  </div>
-</header>
-.aa-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 0;
-  border-bottom: 2px solid #e5e5e5;
-  gap: 24px;
-}
-
-.aa-header-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.aa-logo {
-  width: 80px;
-  height: auto;
-}
-
-.aa-brand-title {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #c00000;
-}
-
-.aa-brand-subtitle {
-  font-size: 14px;
-  color: #444;
-  margin-top: 4px;
-}
-
-.aa-header-right {
-  text-align: right;
-  font-size: 14px;
-}
-
-.aa-contact-line a {
-  color: #004080;
-  text-decoration: none;
-}
-
-.aa-contact-line a:hover {
-  text-decoration: underline;
-}
-
-.aa-hours {
-  margin-top: 4px;
-  font-weight: 600;
-}
-
-.aa-pay-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 14px;
-  background: #006aff;
-  color: #fff;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 14px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
-}
-
-.aa-pay-button:hover {
-  background: #0052cc;
-}
-<section class="aa-section">
-  <h2 class="aa-section-title">What AA Transmitting Is</h2>
-
-  <p>
-    AA Transmitting is Central New Jersey’s only <strong>privacy‑focused transmitting service</strong>.
-    We are not a rideshare, not a taxi, and not a delivery service. We do not carry passengers,
-    we do not share rides, and we do not track you through an app.
-  </p>
-
-  <p>
-    Instead, we <strong>transmit any THING</strong> that fits into one of our transmitting devices —
-    from small electronics to drones to full‑size vehicles — with no surge pricing, no hidden fees,
-    and no unpredictable fluctuations. Our pricing is always upfront, always consistent, and always
-    easy to understand.
-  </p>
-
-  <p>
-    If you’re ever unsure whether we have the right device to transmit your item, simply email us at
-    <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a> and we’ll confirm immediately.
-  </p>
-</section>
-.aa-section {
-  margin-top: 32px;
-  padding: 20px;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.aa-section-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: #111;
-}
-
-.aa-section p {
-  font-size: 15px;
-  color: #444;
-  margin-bottom: 12px;
-  line-height: 1.55;
-}
-<section class="aa-section">
-  <h2 class="aa-section-title">Pricing Overview</h2>
-
-  <p>
-    AA Transmitting uses a simple, transparent pricing structure with no surge pricing,
-    no hidden fees, and no unpredictable fluctuations. All transmitting fees are based on:
-  </p>
-
-  <ul class="aa-list">
-    <li><strong>Distance</strong> (per‑mile)</li>
-    <li><strong>Idle‑Time</strong> (per‑minute)</li>
-    <li><strong>Toll Fees</strong> (rounded up to the next even dollar)</li>
-  </ul>
-
-  <h3 class="aa-subtitle">Distance Pricing</h3>
-
-  <table class="aa-pricing-table">
-    <tr>
-      <th>Distance</th>
-      <th>Rate</th>
-    </tr>
-    <tr>
-      <td>Local (Under 15 Miles)</td>
-      <td>$1.60 per mile</td>
-    </tr>
-    <tr>
-      <td>20‑Mile Transmit</td>
-      <td>$1.65 per mile</td>
-    </tr>
-    <tr>
-      <td>25‑Mile Transmit</td>
-      <td>$1.70 per mile</td>
-    </tr>
-    <tr>
-      <td>30‑Mile Transmit</td>
-      <td>$1.75 per mile</td>
-    </tr>
-    <tr>
-      <td>40‑Mile Transmit</td>
-      <td>$2.00 per mile</td>
-    </tr>
-    <tr>
-      <td>50‑Mile Transmit</td>
-      <td>$2.00 per mile</td>
-    </tr>
-    <tr>
-      <td>75‑Mile Transmit</td>
-      <td>$2.20 per mile</td>
-    </tr>
-    <tr>
-      <td>100‑Mile Transmit</td>
-      <td>$2.50 per mile</td>
-    </tr>
-  </table>
-
-  <p class="aa-note">
-    The per‑mile rate increases after the local threshold due to the cost of returning
-    the transmitting device back to the Central NJ operating region.
-  </p>
-
-  <h3 class="aa-subtitle">Idle‑Time Pricing</h3>
-
-  <table class="aa-pricing-table">
-    <tr>
-      <th>Idle‑Time</th>
-      <th>Rate</th>
-    </tr>
-    <tr>
-      <td>Per‑Minute</td>
-      <td>$0.50 per minute</td>
-    </tr>
-  </table>
-
-  <p class="aa-note">
-    Idle‑time includes any time you request the transmitter to wait during a single
-    transmitting, or any traffic delay that adds more than 10 minutes to the estimated
-    time of your chosen route. After the 10‑minute mark, idle‑time is charged at
-    $0.50 per minute.
-  </p>
-</section>
-.aa-list {
-  margin: 12px 0 20px;
-  padding-left: 20px;
-  color: #444;
-  font-size: 15px;
-}
-
-.aa-subtitle {
-  font-size: 17px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-.aa-pricing-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 12px;
-}
-
-.aa-pricing-table th {
-  background: #f5f5f5;
-  padding: 8px;
-  font-weight: 600;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-}
-
-.aa-pricing-table td {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
-  color: #333;
-}
-
-.aa-note {
-  font-size: 13px;
-  color: #666;
-  margin-top: 6px;
-}
-<section class="aa-section">
-  <h2 class="aa-section-title">Toll Fee Pricing</h2>
-
-  <p>
-    Toll fees are calculated using <strong>your own preferred navigation or directions app</strong>
-    (Google Maps, Apple Maps, Waze, HereWeGo, etc.). The toll amount is based on:
-  </p>
-
-  <ul class="aa-list">
-    <li>The address the item is being transmitted <strong>from</strong> (Address A)</li>
-    <li>The address the item is being transmitted <strong>to</strong> (Address B)</li>
-    <li>The <strong>specific route</strong> you choose</li>
-  </ul>
-
-  <p>
-    Whatever toll amount your app shows for your chosen route is simply
-    <strong>rounded up to the next even dollar</strong> and added to your transmitting total.
-  </p>
-
-  <p class="aa-note">
-    Example: If your chosen route shows a $1.67 toll, the toll fee for your transmitting
-    is rounded up to <strong>$2.00</strong>.
-  </p>
-</section>
-/* Reuses the same .aa-section, .aa-section-title, .aa-list, and .aa-note styles from earlier parts */
-<section class="aa-section">
-  <h2 class="aa-section-title">How to Send Transmitting Directions</h2>
-
-  <p>
-    To begin a transmitting, simply use your preferred navigation or directions app
-    (Google Maps, Apple Maps, Waze, HereWeGo, etc.) and enter:
-  </p>
-
-  <ul class="aa-list">
-    <li>The address the item is being transmitted <strong>from</strong> (Address A)</li>
-    <li>The address the item is being transmitted <strong>to</strong> (Address B)</li>
-  </ul>
-
-  <p>
-    Your screenshot must clearly show:
-  </p>
-
-  <ul class="aa-list">
-    <li><strong>Distance</strong> of the route</li>
-    <li><strong>Estimated time</strong> of the route</li>
-    <li><strong>Your chosen route highlighted</strong></li>
-    <li><strong>Any toll fees</strong> listed for that route</li>
-  </ul>
-
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 1 — Valid Directions Screenshot</div>
-    <img src="example1_directions.png"
-         alt="Example directions screenshot"
-         class="aa-example-image" />
-  </div>
-
-  <p>
-    Once your screenshot is ready, send it to us by either:
-  </p>
-
-  <ul class="aa-list">
-    <li><strong>Text:</strong> 732‑633‑0200</li>
-    <li><strong>Email:</strong> <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a></li>
-  </ul>
-
-  <p class="aa-note">
-    You will receive a confirmation message once we’ve received your directions.
-  </p>
-</section>
-.aa-example-block {
-  margin-top: 16px;
-  padding: 12px;
-  border: 1px dashed #ccc;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.aa-example-label {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #004080;
-}
-
-.aa-example-image {
-  width: 100%;
-  max-width: 420px;
-  border-radius: 6px;
-  display: block;
-}
-<section class="aa-section">
-  <h2 class="aa-section-title">How to Pay for Your Transmitting</h2>
-
-  <p>
-    Once you’ve sent us your transmitting directions and received confirmation,
-    you can securely pay for your transmitting through Square. Payment is simple:
-    just check the boxes that match your <strong>distance</strong>,
-    <strong>idle‑time</strong>, and <strong>toll fees</strong>.
-  </p>
-
-  <h3 class="aa-subtitle">1. Open the Secure Square Pay Page</h3>
-
-  <p>
-    You can access the payment page in any of the following ways:
-  </p>
-
-  <ul class="aa-list">
-    <li>Click the “Pay Securely via Square” button at the top of this site</li>
-    <li>Scan the QR code below with your phone</li>
-    <li>Or go directly to: <strong>https://square.link/u/zN6dTcJ3</strong></li>
-  </ul>
-
-  <div class="aa-example-block">
-    <div class="aa-example-label">Scan to Pay</div>
-    <img src="aatransmittingsquarepaymentqr.png"
-         alt="AA Transmitting Square Payment QR Code"
-         class="aa-example-image" />
-  </div>
-
-  <h3 class="aa-subtitle">2. Check the Boxes That Match Your Directions</h3>
-
-  <p>
-    On the Square Buy Page, simply check the combination of boxes that add up to:
-  </p>
-
-  <ul class="aa-list">
-    <li>Your total <strong>distance</strong> (rounded up to the next whole mile)</li>
-    <li>Your total <strong>idle‑time</strong> (if any)</li>
-    <li>Your <strong>toll fees</strong> (rounded up to the next even dollar)</li>
-  </ul>
-
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 2 — Square Buy Page</div>
-    <img src="example2_buy_page.png"
-         alt="Example Square Buy Page"
-         class="aa-example-image" />
-  </div>
-
-  <p class="aa-note">
-    Once your payment is correct, you will receive an estimated arrival time
-    through the same method you used to send your directions (text or email).
-    Our transmitters never carry cash — all payments are processed securely online.
-  </p>
-</section>
-/* Reuses .aa-section, .aa-section-title, .aa-subtitle, .aa-list, .aa-note */
-
-.aa-example-block {
-  margin-top: 16px;
-  padding: 12px;
-  border: 1px dashed #ccc;
-  border-radius: 8px;
-  background: #fafafa;
-}
-
-.aa-example-label {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #004080;
-}
-
-.aa-example-image {
-  width: 100%;
-  max-width: 420px;
-  border-radius: 6px;
-  display: block;
-}
-<section class="aa-section">
-  <h2 class="aa-section-title">Examples</h2>
-
-  <p>
-    These examples show how to read your transmitting directions, how to calculate
-    distance, idle‑time, and toll fees, and how to check the correct boxes on the
-    Square Buy Page.
-  </p>
-
-  <!-- Example 1 -->
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 1 — 3.5 Miles, No Delays, No Tolls</div>
-    <img src="example1_directions.png"
-         alt="Example 1 directions screenshot"
-         class="aa-example-image" />
-
-    <p class="aa-example-text">
-      This route is 3.5 miles with no significant delays and no tolls.
-      Because distance must always be rounded up to the next whole mile,
-      this becomes a <strong>4‑mile transmitting</strong>.
-    </p>
-
-    <p class="aa-example-text">
-      On the Square Buy Page, you would check:
-    </p>
-
-    <ul class="aa-list">
-      <li>Four “1‑Mile Transmitting Fee” boxes</li>
-      <li>No idle‑time boxes</li>
-      <li>No toll boxes</li>
-    </ul>
-
-    <img src="example2_buy_page.png"
-         alt="Example 2 buy page screenshot"
-         class="aa-example-image" />
-  </div>
-
-  <!-- Example 2 -->
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 2 — 30 Miles, 34 Minutes, $1.67 Toll</div>
-    <img src="example3_route_toll.png"
-         alt="Example 3 route with toll screenshot"
-         class="aa-example-image" />
-
-    <p class="aa-example-text">
-      This route is 30 miles, estimated at 34 minutes, with a $1.67 toll.
-      The toll is rounded up to <strong>$2.00</strong>.
-    </p>
-
-    <p class="aa-example-text">
-      On the Square Buy Page, you would check:
-    </p>
-
-    <ul class="aa-list">
-      <li>One “30‑Mile Transmitting Fee” box</li>
-      <li>No idle‑time boxes (no significant delay)</li>
-      <li>Two “$1 Toll Fee” boxes</li>
-    </ul>
-
-    <img src="example4_30mile_box.png"
-         alt="Example 4 30-mile box screenshot"
-         class="aa-example-image" />
-  </div>
-
-  <!-- Example 3 -->
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 3 — Toll Fees Only</div>
-    <img src="example5_toll_boxes.png"
-         alt="Example 5 toll boxes screenshot"
-         class="aa-example-image" />
-
-    <p class="aa-example-text">
-      If your route contains only toll fees (no distance beyond the base mile
-      and no idle‑time), simply check the toll boxes that match the rounded‑up
-      toll amount.
-    </p>
-  </div>
-
-  <!-- Example 4 -->
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 4 — Idle‑Time Trigger</div>
-
-    <p class="aa-example-text">
-      Idle‑time is charged when:
-    </p>
-
-    <ul class="aa-list">
-      <li>You request the transmitter to wait during the transmitting</li>
-      <li>A traffic delay adds more than 10 minutes to the estimated time</li>
-    </ul>
-
-    <p class="aa-example-text">
-      After the 10‑minute mark, idle‑time is charged at <strong>$0.50 per minute</strong>.
-    </p>
-  </div>
-
-  <!-- Example 5 -->
-  <div class="aa-example-block">
-    <div class="aa-example-label">Example 5 — Full Breakdown</div>
-
-    <p class="aa-example-text">
-      Any transmitting can be paid for by combining:
-    </p>
-
-    <ul class="aa-list">
-      <li>Distance (rounded up)</li>
-      <li>Idle‑time (if any)</li>
-      <li>Toll fees (rounded up to the next even dollar)</li>
-    </ul>
-
-    <p class="aa-example-text">
-      This ensures you never need an app tracking you or gathering your data.
-      You maintain full privacy while still receiving accurate, upfront pricing.
-    </p>
-  </div>
-</section>
-.aa-example-text {
-  font-size: 14px;
-  color: #444;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  line-height: 1.55;
-}
-<section class="aa-section">
-  <h2 class="aa-section-title">Co‑Op Structure, Fairness, and Safety</h2>
-
-  <p>
-    AA Transmitting is structured as a <strong>co‑op</strong>, which means our transmitters
-    keep significantly more of each route than rideshare, taxi, or delivery drivers do.
-    This ensures fair compensation, long‑term sustainability, and a service built on
-    mutual respect rather than exploitation.
-  </p>
-
-  <ul class="aa-list">
-    <li>Rideshare companies typically keep <strong>40%–70%</strong> of each route</li>
-    <li>Taxi companies keep <strong>33%–55%</strong></li>
-    <li>Delivery companies keep <strong>45%–65%</strong></li>
-    <li>AA Transmitting transmitters keep <strong>87.5%</strong></li>
-  </ul>
-
-  <p>
-    This structure allows us to maintain a privacy‑focused, surge‑free, and
-    customer‑first service while ensuring our transmitters are treated fairly.
-  </p>
-
-  <h3 class="aa-subtitle">Safety and Recording Policy</h3>
-
-  <p>
-    For the safety and security of all parties, each transmitting is recorded for its
-    duration. These recordings are <strong>immediately overwritten</strong> by the next
-    transmitting unless a transmitter notices that a customer has taken an amenity
-    clearly meant for customer use (such as bottled water or device chargers).
-  </p>
-
-  <p>
-    In those rare cases, the previous transmitting’s recording is securely stored
-    only for the purpose of resolving the amenity charge dispute. If no amenity is
-    taken, the recording is deleted automatically and permanently.
-  </p>
-
-  <p class="aa-note">
-    AA Transmitting never tracks customers, never stores unnecessary data, and never
-    compromises privacy. Our entire system is designed to protect both you and the
-    transmitter while maintaining complete transparency.
-  </p>
-</section>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
