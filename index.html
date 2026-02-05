@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AA Transmitting — Your Premier Privacy-Focused Transmitter</title>
+  <title>AA Transmitting — Privacy-Focused Co-Op Transmitting Service</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #2f3136;
-      --bg-alt: #363840;
-      --bg-soft: #3c3f48;
-      --card-bg: #3a3d46;
-      --primary: #ff2b45;
-      --primary-dark: #e02038;
-      --accent: #7fb7ff;
+      --bg-top: #34363f;
+      --bg-mid: #2b2d34;
+      --bg-bottom: #25262c;
+      --accent-red: #ff2b45;
+      --accent-red-dark: #e02038;
+      --accent-blue: #7fb7ff;
       --text-main: #ffffff;
       --text-muted: #c3c5cf;
-      --border-subtle: #4a4d57;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.55);
-      --radius-card: 14px;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow-strong: 0 18px 40px rgba(0, 0, 0, 0.65);
+      --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.55);
       --radius-pill: 999px;
-      --max-width: 1080px;
+      --radius-soft: 14px;
       --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --max-width: 1080px;
     }
 
     * {
@@ -32,14 +32,13 @@
     body {
       font-family: var(--font-main);
       color: var(--text-main);
-      background: radial-gradient(circle at top, #3d4049 0%, #2b2d33 40%, #1f2025 100%);
-      background-attachment: fixed;
-      background-size: cover;
+      background: linear-gradient(180deg, var(--bg-top), var(--bg-mid), var(--bg-bottom));
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
-      color: var(--accent);
+      color: var(--accent-blue);
       text-decoration: none;
     }
 
@@ -47,104 +46,108 @@
       text-decoration: underline;
     }
 
-    .aa-page {
+    .aa-shell {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 80px 16px 48px;
+      padding: 80px 16px 40px;
     }
 
     /* STICKY HEADER */
-    header.aa-header {
+
+    .aa-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(31, 32, 38, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(24, 25, 31, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       padding: 10px 16px;
-      margin: 0 -16px 24px;
+      margin: 0 -16px 28px;
     }
 
-    .aa-brand {
+    .aa-header-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      min-width: 0;
     }
 
     .aa-logo {
-      height: 44px;
-      width: auto;
-      display: block;
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      object-fit: cover;
     }
 
-    .aa-brand-text {
+    .aa-header-text {
       display: flex;
       flex-direction: column;
       gap: 2px;
+      min-width: 0;
     }
 
-    .aa-brand-name {
-      font-size: 18px;
+    .aa-header-name {
+      font-size: 0.98rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .aa-brand-tagline {
-      font-size: 13px;
+    .aa-header-tagline {
+      font-size: 0.72rem;
+      line-height: 1.25;
+      color: var(--text-muted);
+    }
+
+    .aa-header-cta {
+      flex-shrink: 0;
+      background: var(--accent-red);
+      color: #ffffff;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
       font-weight: 600;
-      color: var(--text-muted);
+      text-decoration: none;
+      box-shadow: 0 8px 22px rgba(255, 43, 69, 0.4);
+      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
     }
 
-    .aa-nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .aa-nav a {
-      font-size: 12px;
-      color: var(--text-muted);
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    .aa-nav a:hover {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-main);
+    .aa-header-cta:hover {
+      background: var(--accent-red-dark);
+      box-shadow: 0 10px 26px rgba(255, 43, 69, 0.5);
+      transform: translateY(-1px);
       text-decoration: none;
     }
 
-    @media (max-width: 800px) {
-      header.aa-header {
-        flex-direction: column;
+    @media (max-width: 720px) {
+      .aa-header {
+        flex-wrap: wrap;
         align-items: flex-start;
       }
-      .aa-nav {
-        justify-content: flex-start;
+      .aa-header-left {
+        width: 100%;
+      }
+      .aa-header-name {
+        white-space: normal;
       }
     }
 
     /* HERO */
+
     .aa-hero {
-      background: radial-gradient(circle at top left, #444754 0%, #32343c 45%, #292b32 100%);
-      border-radius: var(--radius-card);
-      box-shadow: var(--shadow-soft);
-      padding: 26px 20px 22px;
-      margin-bottom: 24px;
+      padding: 26px 4px 24px;
       display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
-      gap: 20px;
-      border: 1px solid var(--border-subtle);
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 24px;
+      align-items: center;
     }
 
     @media (max-width: 800px) {
@@ -153,16 +156,19 @@
       }
     }
 
-    .aa-hero-main-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 6px;
+    .aa-hero-left {
+      position: relative;
+      padding-right: 8px;
     }
 
-    .aa-hero-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
+    .aa-hero-orbit {
+      position: absolute;
+      inset: -40px -10px auto auto;
+      pointer-events: none;
+      opacity: 0.4;
+      background: radial-gradient(circle at top left, rgba(255, 43, 69, 0.35), transparent 60%);
+      filter: blur(10px);
+      z-index: -1;
     }
 
     .aa-hero-pill {
@@ -172,10 +178,10 @@
       padding: 6px 12px;
       border-radius: var(--radius-pill);
       background: rgba(0, 0, 0, 0.35);
-      font-size: 12px;
+      border: 1px solid var(--border-soft);
+      font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 12px;
     }
 
     .aa-hero-pill span {
@@ -184,11 +190,24 @@
       justify-content: center;
       width: 18px;
       height: 18px;
-      border-radius: 50%;
-      background: rgba(255, 43, 69, 0.12);
-      color: var(--primary);
-      font-size: 11px;
+      border-radius: 999px;
+      background: rgba(255, 43, 69, 0.16);
+      color: var(--accent-red);
+      font-size: 0.7rem;
       font-weight: 600;
+    }
+
+    .aa-hero-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .aa-hero-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      max-width: 34rem;
     }
 
     .aa-hero-list {
@@ -197,7 +216,7 @@
     }
 
     .aa-hero-list li {
-      font-size: 14px;
+      font-size: 0.9rem;
       color: var(--text-main);
       margin-bottom: 4px;
       display: flex;
@@ -207,16 +226,17 @@
 
     .aa-hero-list li::before {
       content: "•";
-      color: var(--primary);
+      color: var(--accent-red);
       font-weight: 700;
       margin-top: 1px;
     }
 
-    .aa-hero-cta-row {
+    .aa-hero-ctas {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       align-items: center;
+      margin-bottom: 8px;
     }
 
     .aa-btn-primary {
@@ -225,21 +245,21 @@
       justify-content: center;
       padding: 10px 18px;
       border-radius: var(--radius-pill);
-      background: var(--primary);
+      background: var(--accent-red);
       color: #ffffff;
-      font-size: 13px;
+      font-size: 0.85rem;
       font-weight: 600;
       border: none;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 10px 22px rgba(255, 43, 69, 0.35);
+      box-shadow: 0 10px 22px rgba(255, 43, 69, 0.4);
       transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
       white-space: nowrap;
     }
 
     .aa-btn-primary:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 12px 28px rgba(255, 43, 69, 0.45);
+      background: var(--accent-red-dark);
+      box-shadow: 0 12px 26px rgba(255, 43, 69, 0.5);
       transform: translateY(-1px);
       text-decoration: none;
     }
@@ -251,10 +271,10 @@
       padding: 9px 16px;
       border-radius: var(--radius-pill);
       background: transparent;
-      color: var(--accent);
-      font-size: 12px;
+      color: var(--accent-blue);
+      font-size: 0.8rem;
       font-weight: 500;
-      border: 1px solid rgba(127, 183, 255, 0.5);
+      border: 1px solid rgba(127, 183, 255, 0.6);
       cursor: pointer;
       text-decoration: none;
       transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
@@ -263,12 +283,12 @@
 
     .aa-btn-secondary:hover {
       background: rgba(127, 183, 255, 0.08);
-      border-color: rgba(127, 183, 255, 0.9);
+      border-color: rgba(127, 183, 255, 0.95);
       text-decoration: none;
     }
 
     .aa-hero-contact {
-      font-size: 12px;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
@@ -276,31 +296,29 @@
       color: var(--text-main);
     }
 
-    .aa-hero-side {
+    .aa-hero-right {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      align-items: flex-start;
     }
 
-    .aa-hero-card {
-      width: 100%;
-      background: var(--bg-soft);
-      border-radius: 12px;
+    .aa-hero-panel {
       padding: 12px 12px 10px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
     }
 
-    .aa-hero-card-title {
-      font-size: 13px;
+    .aa-hero-panel-title {
+      font-size: 0.8rem;
       font-weight: 600;
       margin-bottom: 4px;
-      color: var(--accent);
+      color: var(--accent-blue);
     }
 
-    .aa-hero-card-text {
-      font-size: 12px;
+    .aa-hero-panel-text {
+      font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
@@ -316,44 +334,63 @@
       width: 70px;
       height: auto;
       border-radius: 8px;
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-soft);
       background: #111318;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
     }
 
     .aa-hero-qr-text {
-      font-size: 12px;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
-    /* SECTIONS */
+    .aa-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .aa-chip {
+      font-size: 0.7rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      border: 1px solid var(--border-soft);
+    }
+
+    /* SECTIONS (OPEN BANDS) */
+
     .aa-section {
-      background: var(--card-bg);
-      border-radius: var(--radius-card);
-      box-shadow: var(--shadow-soft);
-      padding: 20px 18px 18px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border-subtle);
+      padding: 26px 4px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .aa-section:first-of-type {
+      border-top: none;
     }
 
     .aa-section-title {
-      font-size: 18px;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 8px;
     }
 
     .aa-subtitle {
-      font-size: 15px;
+      font-size: 0.95rem;
       font-weight: 600;
       margin-top: 14px;
       margin-bottom: 6px;
-      color: var(--accent);
+      color: var(--accent-blue);
     }
 
     .aa-section p {
-      font-size: 14px;
+      font-size: 0.9rem;
       color: var(--text-main);
       line-height: 1.7;
       margin-bottom: 8px;
+      max-width: 46rem;
     }
 
     .aa-list {
@@ -363,82 +400,79 @@
     }
 
     .aa-list li {
-      font-size: 14px;
+      font-size: 0.9rem;
       color: var(--text-main);
       margin-bottom: 4px;
       display: flex;
       align-items: flex-start;
       gap: 6px;
+      max-width: 46rem;
     }
 
     .aa-list li::before {
       content: "•";
-      color: var(--primary);
+      color: var(--accent-red);
       font-weight: 700;
       margin-top: 1px;
     }
 
     .aa-note {
-      font-size: 13px;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      border-left: 3px solid rgba(127, 183, 255, 0.6);
+      border-left: 3px solid rgba(127, 183, 255, 0.7);
       padding-left: 10px;
       margin-top: 6px;
+      max-width: 46rem;
     }
 
-    /* EXAMPLE BLOCKS / IMAGES */
+    /* IMAGES (FLOATING, OPEN) */
+
+    .aa-image-wrap {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .aa-map-image,
+    .aa-example-image {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 12px;
+      border: 1px solid #20222a;
+      background: #111318;
+      box-shadow: var(--shadow-strong);
+      display: block;
+    }
+
     .aa-example-block {
       margin-top: 12px;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px dashed rgba(255, 255, 255, 0.16);
+      margin-bottom: 10px;
+      max-width: 46rem;
     }
 
     .aa-example-label {
-      font-size: 13px;
+      font-size: 0.82rem;
       font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--accent);
-    }
-
-    .aa-example-image {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 10px;
-      display: block;
-      margin-top: 4px;
-      margin-bottom: 6px;
-      border: 1px solid #20222a;
-      background: #111318;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      margin-bottom: 4px;
+      color: var(--accent-blue);
     }
 
     .aa-example-text {
-      font-size: 13px;
+      font-size: 0.82rem;
       color: var(--text-main);
       margin-top: 4px;
       margin-bottom: 4px;
       line-height: 1.65;
     }
 
-    .aa-map-image {
-      width: 100%;
-      max-width: 520px;
-      border-radius: 10px;
-      display: block;
-      margin-top: 8px;
-      border: 1px solid #20222a;
-      background: #111318;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-    }
-
     /* FOOTER */
+
     .aa-footer {
-      margin-top: 26px;
+      margin-top: 30px;
       padding-top: 14px;
-      border-top: 1px solid var(--border-subtle);
-      font-size: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.78rem;
       color: var(--text-muted);
       display: flex;
       flex-wrap: wrap;
@@ -447,55 +481,40 @@
     }
 
     .aa-footer a {
-      font-size: 12px;
-    }
-
-    .aa-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .aa-chip {
-      font-size: 11px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text-muted);
-      border: 1px solid var(--border-subtle);
+      font-size: 0.78rem;
     }
   </style>
 </head>
 <body>
-  <div class="aa-page">
-    <!-- HEADER -->
-    <header class="aa-header">
-      <div class="aa-brand">
-        <img src="AATransmittingLogo.png" alt="AA Transmitting Logo" class="aa-logo" />
-        <div class="aa-brand-text">
-          <div class="aa-brand-name">AA Transmitting</div>
-          <div class="aa-brand-tagline">Your Premier Privacy-Focused Transmitter</div>
+  <!-- STICKY HEADER -->
+  <header class="aa-header">
+    <div class="aa-header-left">
+      <img src="AATransmittingLogo.png" alt="AA Transmitting Logo" class="aa-logo" />
+      <div class="aa-header-text">
+        <div class="aa-header-name">AA Transmitting</div>
+        <div class="aa-header-tagline">
+          Privacy-Focused Co-Op Transmitting Service<br />
+          With Up-Front, Surge-Less Pricing
         </div>
       </div>
-      <nav class="aa-nav">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#directions">Send Directions</a>
-        <a href="#pay">Pay Online</a>
-        <a href="#examples">Examples</a>
-        <a href="#coop">Co-Op & Safety</a>
-      </nav>
-    </header>
+    </div>
+    <a href="https://square.link/u/zN6dTcJ3" class="aa-header-cta" id="pay">
+      Pay via Square
+    </a>
+  </header>
 
+  <main class="aa-shell">
     <!-- HERO -->
     <section class="aa-hero" id="top">
-      <div>
+      <div class="aa-hero-left">
+        <div class="aa-hero-orbit"></div>
         <div class="aa-hero-pill">
           <span>NJ</span>
-          Private, surge-free transmitting — no tracking, no apps (no tracking), no nonsense.
+          Private, surge-free transmitting — no tracking, no apps, no nonsense.
         </div>
-        <h1 class="aa-hero-main-title">Private, Surge-Pricing Free Transmitting from and for Central New Jersey--to Wherever</h1>
+        <h1 class="aa-hero-title">
+          Private, Surge-Pricing Free Transmitting from and for Central New Jersey--to Wherever
+        </h1>
         <p class="aa-hero-subtitle">
           You choose the route. You keep your privacy. We handle the transmitting — fairly, clearly, and without surprise fees.
         </p>
@@ -504,39 +523,35 @@
           <li>Transparent per-mile, idle-time, and toll-fee structure.</li>
           <li>Co-op model — transmitters keep 87.5% of each route, plus 100% of tips.</li>
         </ul>
-        <div class="aa-hero-cta-row">
-          <a href="https://square.link/u/zN6dTcJ3" class="aa-btn-primary" id="pay">
-            Pay Securely via Square
-          </a>
-          <a href="https://square.link/u/zN6dTcJ3" class="aa-btn-primary">
-            Start the Process
-          </a>
-          <a href="#directions" class="aa-btn-secondary">
-            See How to Send Directions
-          </a>
-          <div class="aa-hero-contact">
-            <strong>Text:</strong> 732-633-0200 &nbsp;|&nbsp;
-            <strong>Email:</strong> <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a>
-          </div>
+        <div class="aa-hero-ctas">
+          <a href="#directions" class="aa-btn-primary">Start Transmitting</a>
+          <a href="#pricing" class="aa-btn-secondary">View Pricing</a>
+        </div>
+        <div class="aa-hero-contact">
+          <strong>Text:</strong> 732-633-0200 &nbsp;|&nbsp;
+          <strong>Email:</strong> <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a>
         </div>
       </div>
-      <div class="aa-hero-side">
-        <div class="aa-hero-card">
-          <div class="aa-hero-card-title">Pay Online — No Cash, No Apps</div>
-          <p class="aa-hero-card-text">
+
+      <div class="aa-hero-right">
+        <div class="aa-hero-panel">
+          <div class="aa-hero-panel-title">Pay Online — No Cash, No Apps</div>
+          <p class="aa-hero-panel-text">
             All transmitting payments are processed securely through Square. Our transmitters never carry cash.
             You simply match your distance, idle-time, and toll fees on the Square Buy Page--then you'll receive a confirmation text or email telling you your transmitter's expected arrival time.
           </p>
           <div class="aa-hero-qr-row">
             <img src="aatransmittingsquarepaymentqr.png" alt="AA Transmitting Square Payment QR Code" class="aa-hero-qr" />
             <div class="aa-hero-qr-text">
-              Scan with your phone to open the secure Square payment page and check the boxes that match your transmitting. AA Transmitting is fully licensed and insured for all transmitting operations by the State of New Jersey.                
+              Scan with your phone to open the secure Square payment page and check the boxes that match your transmitting.
+              AA Transmitting is fully licensed and insured for all transmitting operations by the State of New Jersey.
             </div>
           </div>
         </div>
-        <div class="aa-hero-card">
-          <div class="aa-hero-card-title">Service Area — Central New Jersey</div>
-          <p class="aa-hero-card-text">
+
+        <div class="aa-hero-panel">
+          <div class="aa-hero-panel-title">Service Area — Central New Jersey</div>
+          <p class="aa-hero-panel-text">
             AA Transmitting primarily serves Central New Jersey and surrounding areas. Transmitting availability may vary
             based on time, distance, and route.
           </p>
@@ -549,7 +564,7 @@
       </div>
     </section>
 
-    <!-- SERVICE AREA MAP -->
+    <!-- SERVICE AREA / HOW IT WORKS -->
     <section class="aa-section" id="how-it-works">
       <h2 class="aa-section-title">Service Area and How It Works</h2>
       <p>
@@ -560,14 +575,16 @@
         Our service area centers on New Jersey and nearby regions. Availability depends on distance, time, and route
         conditions.
       </p>
-      <img src="aatransmittingserviceareamap.png" alt="AA Transmitting Service Area Map" class="aa-map-image" />
+      <div class="aa-image-wrap">
+        <img src="aatransmittingserviceareamap.png" alt="AA Transmitting Service Area Map" class="aa-map-image" />
+      </div>
       <p class="aa-note">
         If you are unsure whether your transmitting is within range, text your directions screenshot to 732-633-0200 and
         we will confirm availability.
       </p>
     </section>
 
-    <!-- PRICING LOGIC -->
+    <!-- PRICING -->
     <section class="aa-section" id="pricing">
       <h2 class="aa-section-title">How Pricing Works</h2>
       <p>
@@ -587,7 +604,9 @@
       </p>
       <div class="aa-example-block">
         <div class="aa-example-label">Per-Mile Options (Example from Square)</div>
-        <img src="aatransmittingsitepic2.png" alt="Per-Mile and Toll Fee Options Example" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic2.png" alt="Per-Mile and Toll Fee Options Example" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           For example, if your route is 30 miles, you would select the “30-Mile Transmitting Fee” option. If your route is
           33 miles, you might select a 30-mile option plus three 1-mile options.
@@ -602,7 +621,9 @@
       </p>
       <div class="aa-example-block">
         <div class="aa-example-label">Idle-Time Options (Example from Square)</div>
-        <img src="aatransmittingsitepic5.png" alt="Idle-Time Fee Options Example" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic5.png" alt="Idle-Time Fee Options Example" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           You only select idle-time options if you request waiting or if a delay clearly extends beyond the original
           estimate. This keeps your pricing fair and transparent.
@@ -627,9 +648,6 @@
         Example: If your chosen route shows a $1.67 toll, the toll fee for your transmitting is rounded up to
         <strong>$2.00</strong>. On the Square Buy Page, you would select the toll fee boxes that add up to $2.00.
       </p>
-      <a href="https://square.link/u/zN6dTcJ3" class="aa-btn-secondary">
-        Begin Payment
-      </a>
     </section>
 
     <!-- DIRECTIONS -->
@@ -653,7 +671,9 @@
 
       <div class="aa-example-block">
         <div class="aa-example-label">Example — Valid Directions Screenshot</div>
-        <img src="aatransmittingsitepic4.png" alt="Example Directions Screenshot 3.5 Miles" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic4.png" alt="Example Directions Screenshot 3.5 Miles" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           This example shows a 3.5-mile route with an estimated time of 10 minutes and no tolls. Because distance is
           rounded up, this becomes a 4-mile transmitting.
@@ -662,7 +682,9 @@
 
       <div class="aa-example-block">
         <div class="aa-example-label">Example — Directions with Toll</div>
-        <img src="aatransmittingsitepic3.png" alt="Example Directions Screenshot with Toll" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic3.png" alt="Example Directions Screenshot with Toll" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           This example shows a 30-mile route with an estimated time of 34 minutes and a $1.67 toll. The toll is rounded
           up to $2.00 for transmitting purposes.
@@ -678,12 +700,9 @@
         You will receive a confirmation message once we’ve received your directions. After that, you can complete your
         payment through Square using the link or QR code.
       </p>
-        <a href="https://square.link/u/zN6dTcJ3" class="aa-btn-primary"> 
-          Transmit Now
-        </a>
     </section>
 
-    <!-- PAYMENT SECTION (SQUARE BUY PAGE EXAMPLE) -->
+    <!-- PAYMENT -->
     <section class="aa-section">
       <h2 class="aa-section-title">How to Pay for Your Transmitting</h2>
       <p>
@@ -695,14 +714,16 @@
       <h3 class="aa-subtitle">Open the Secure Square Pay Page</h3>
       <p>You can access the payment page in any of the following ways:</p>
       <ul class="aa-list">
-        <li>Click the “Pay Securely via Square” button at the top of this site</li>
+        <li>Click the “Pay via Square” button in the sticky header</li>
         <li>Scan the QR code below with your phone</li>
         <li>Or go directly to: <strong>https://square.link/u/zN6dTcJ3</strong></li>
       </ul>
 
       <div class="aa-example-block">
         <div class="aa-example-label">Scan to Pay</div>
-        <img src="aatransmittingsquarepaymentqr.png" alt="AA Transmitting Square Payment QR Code" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsquarepaymentqr.png" alt="AA Transmitting Square Payment QR Code" class="aa-example-image" />
+        </div>
       </div>
 
       <h3 class="aa-subtitle">Match Your Distance, Idle-Time, and Tolls</h3>
@@ -713,7 +734,9 @@
 
       <div class="aa-example-block">
         <div class="aa-example-label">Example — Square Buy Page</div>
-        <img src="aatransmittingsitepic1.png" alt="Square Buy Page Example" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic1.png" alt="Square Buy Page Example" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           This example shows how per-mile transmitting fees and toll fees can be combined. You select only the boxes that
           apply to your transmitting.
@@ -726,7 +749,7 @@
       </p>
     </section>
 
-    <!-- EXAMPLES SECTION -->
+    <!-- EXAMPLES -->
     <section class="aa-section" id="examples">
       <h2 class="aa-section-title">Examples — Putting It All Together</h2>
       <p>
@@ -736,7 +759,9 @@
 
       <div class="aa-example-block">
         <div class="aa-example-label">Example 1 — 3.5 Miles, No Delays, No Tolls</div>
-        <img src="aatransmittingsitepic4.png" alt="3.5 Mile Route Example" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic4.png" alt="3.5 Mile Route Example" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           This route is 3.5 miles with no significant delays and no tolls. Because distance must always be rounded up to
           the next whole mile, this becomes a <strong>4-mile transmitting</strong>.
@@ -753,7 +778,9 @@
 
       <div class="aa-example-block">
         <div class="aa-example-label">Example 2 — 30 Miles, 34 Minutes, $1.67 Toll</div>
-        <img src="aatransmittingsitepic3.png" alt="30 Mile Route with Toll Example" class="aa-example-image" />
+        <div class="aa-image-wrap">
+          <img src="aatransmittingsitepic3.png" alt="30 Mile Route with Toll Example" class="aa-example-image" />
+        </div>
         <p class="aa-example-text">
           This route is 30 miles, estimated at 34 minutes, with a $1.67 toll. The toll is rounded up to
           <strong>$2.00</strong>.
@@ -845,13 +872,15 @@
 
     <!-- FOOTER -->
     <footer class="aa-footer">
-      <div>© <span id="year"></span> AA Transmitting. All rights reserved. Fully licensed and insured — New Jersey transmitting operations.</div>
+      <div>
+        © <span id="year"></span> AA Transmitting. All rights reserved. Fully licensed and insured — New Jersey transmitting operations.
+      </div>
       <div>
         Text: 732-633-0200 &nbsp;|&nbsp;
         Email: <a href="mailto:aatransmitting@aol.com">AATRANSMITTING@AOL.COM</a>
       </div>
     </footer>
-  </div>
+  </main>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
