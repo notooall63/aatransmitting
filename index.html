@@ -7,16 +7,17 @@
 
 <style>
 :root {
-  --bg: #0f0f11;
-  --surface: #1a1a1d;
+  --bg: #1b1c1f;
+  --surface: #242529;
   --text-main: #ffffff;
   --text-muted: #b5b5b7;
   --accent: #ff2b45;
   --accent-hover: #ff4f63;
-  --divider: #2a2a2d;
+  --divider: #2f3033;
   --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* GLOBAL */
 body {
   margin: 0;
   padding: 0;
@@ -33,21 +34,69 @@ body {
   padding: 0 20px;
 }
 
+/* STICKY HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(27, 28, 31, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--divider);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left img {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.header-title span:first-child {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.header-title span:last-child {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.header .btn {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+}
+
 /* HERO */
 .hero {
   text-align: center;
   padding: 120px 20px 100px;
-  background: radial-gradient(circle at center, #1c1c1f 0%, #0f0f11 70%);
+  background: radial-gradient(circle at center, #2d2e33 0%, #1b1c1f 70%);
 }
 
 .hero img {
-  width: 140px;
+  width: 150px;
   height: auto;
+  border-radius: 16px;
   margin-bottom: 28px;
 }
 
 .hero h1 {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
   margin: 0 0 12px;
 }
 
@@ -57,6 +106,7 @@ body {
   margin-bottom: 32px;
 }
 
+/* BUTTON */
 .btn {
   display: inline-block;
   padding: 14px 28px;
@@ -109,6 +159,25 @@ body {
   font-size: 1.3rem;
 }
 
+/* EXAMPLE IMAGES */
+.example-block {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.example-block img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+  margin-bottom: 12px;
+}
+
+.example-block p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
 /* FOOTER */
 footer {
   text-align: center;
@@ -122,12 +191,24 @@ footer {
 
 <body>
 
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <img src="AATransmittingLogo.png" alt="AA Transmitting Logo" />
+    <div class="header-title">
+      <span>AA Transmitting</span>
+      <span>Anonymous. Accurate. Delivered.</span>
+    </div>
+  </div>
+  <a class="btn" href="#send">Start Transmission</a>
+</header>
+
 <!-- HERO -->
 <section class="hero">
   <img src="AATransmittingLogo.png" alt="AA Transmitting Logo" />
-  <h1>Anonymous. Accurate. Delivered.</h1>
-  <p>Your trusted partner for private, third‑party transmissions.</p>
-  <a class="btn" href="#how">Start Your Transmission</a>
+  <h1>Your Premier Privacy‑Focused Transmitter</h1>
+  <p>Your message. Our delivery. Professional, neutral, and discreet.</p>
+  <a class="btn" href="#how">How It Works</a>
 </section>
 
 <div class="container">
@@ -160,9 +241,35 @@ footer {
   <!-- PRICING -->
   <section id="pricing" class="section">
     <h2>Pricing</h2>
-    <p>Simple, transparent, and flat‑rate. No hidden fees.</p>
+    <p>Simple, transparent, and calculated automatically at checkout.</p>
 
-    <h1 style="font-size:3rem; margin: 10px 0 20px;">$25 / Transmission</h1>
+    <h1 style="font-size:2.4rem; margin: 10px 0 20px;">$3.00 Pick‑Up Fee + Mileage</h1>
+    <p style="color:var(--text-muted); margin-bottom:32px;">
+      Mileage rates vary by distance and are displayed clearly on the Square payment page before you confirm.
+    </p>
+
+    <a class="btn" href="#examples">See Example Delivery</a>
+  </section>
+
+  <!-- EXAMPLE IMAGES -->
+  <section id="examples" class="section">
+    <h2>Step‑By‑Step Example</h2>
+    <p>Here’s exactly what a real AA Transmitting delivery looks like.</p>
+
+    <div class="example-block">
+      <img src="ExampleMessage.png" alt="Example Message" />
+      <p><strong>Step 1:</strong> You submit your message and recipient details.</p>
+    </div>
+
+    <div class="example-block">
+      <img src="ExampleDelivery.png" alt="Example Delivery" />
+      <p><strong>Step 2:</strong> We deliver the message exactly as written.</p>
+    </div>
+
+    <div class="example-block">
+      <img src="ExampleConfirmation.png" alt="Example Confirmation" />
+      <p><strong>Step 3:</strong> You receive confirmation once delivery is complete.</p>
+    </div>
 
     <a class="btn" href="#send">Send Directions</a>
   </section>
@@ -185,7 +292,7 @@ footer {
 
       <div class="step">
         <h3>3. Submit & Confirm</h3>
-        <p>We’ll send your message and notify you when it’s delivered.</p>
+        <p>Square will calculate mileage automatically before you pay.</p>
       </div>
     </div>
 
@@ -195,6 +302,8 @@ footer {
 </div>
 
 <footer>
+  Fully licensed and insured • Neutral third‑party messenger • No edits, no commentary, no judgment • Secure Square payments  
+  <br><br>
   © 2026 AA Transmitting — All Rights Reserved
 </footer>
 
