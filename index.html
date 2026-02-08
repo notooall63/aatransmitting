@@ -483,6 +483,36 @@
     .aa-footer a {
       font-size: 0.78rem;
     }
+
+    .aa-top-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 0 18px;
+      margin: 0 -16px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(24,25,31,0.65);
+      backdrop-filter: blur(8px);
+      padding-left: 16px;
+    }
+
+    .aa-top-links a {
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.12);
+      text-decoration: none;
+      transition: 0.15s ease;
+    }
+
+    .aa-top-links a:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
   </style>
 </head>
 <body>
@@ -499,10 +529,19 @@
       </div>
     </div>
     <a href="https://square.link/u/zN6dTcJ3" class="aa-header-cta" id="pay">
-      Pay via Square
+      Start Transmitting/Personal Shopping
     </a>
   </header>
 
+    <div class="aa-top-links">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#directions">Directions</a>
+      <a href="#personal-shopping">Personal Shopping</a>
+      <a href="#examples">Examples</a>
+      <a href="#coop">Co‑Op & Safety</a>
+   </div>
+    
   <main class="aa-shell">
     <!-- HERO -->
     <section class="aa-hero" id="top">
@@ -527,8 +566,9 @@
           <li>Personal shopping priced up front, per every 10 items, added to the trasmitting charge.</li>
         </ul>
         <div class="aa-hero-ctas">
-          <a href="#directions" class="aa-btn-primary">Start Transmitting</a>
-          <a href="#pricing" class="aa-btn-secondary">View Pricing</a>
+          <a href="#directions" class="aa-btn-primary">Start Transmitting/Personal Shopping</a>
+          <a href="#pricing" class="aa-btn-secondary">View Mileage Pricing</a>
+          <a href="#personal-shopping" class="aa-btn-secondary">View Personal Shopping Info</a>
         </div>
         <div class="aa-hero-contact">
           <strong>Text:</strong> 732-633-0200 &nbsp;|&nbsp;
